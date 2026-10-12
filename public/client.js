@@ -110,6 +110,7 @@ function renderAnswering() {
     $('answer').focus();
   }
   roundEndsAt = Date.now() + state.remainingMs;
+  updateTimer(); // sans attendre le prochain tic, pour ne pas montrer l'ancien chrono
   $('answer-round').textContent = `Mème ${state.round + 1} / ${state.totalRounds}`;
   renderMedia($('answer-media'), state.meme);
   $('answer').maxLength = state.maxAnswerLength;
@@ -121,12 +122,13 @@ function renderAnswering() {
       : '') + `En attente de ${waiting} joueur(s).`;
 }
 
-setInterval(() => {
+function updateTimer() {
   if (!state || state.phase !== 'answering') return;
   const seconds = Math.max(0, Math.ceil((roundEndsAt - Date.now()) / 1000));
   $('timer').textContent = `⏱ ${seconds} s`;
   $('timer').classList.toggle('urgent', seconds <= 5);
-}, 200);
+}
+setInterval(updateTimer, 200);
 
 // ---------- Votes ----------
 

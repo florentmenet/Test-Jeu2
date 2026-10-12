@@ -14,7 +14,7 @@ Jeu multijoueur dans le navigateur : un mème (image ou vidéo) s'affiche, chaqu
    - Un joueur qui ne vote pas n'est pas compté.
    - Une réponse vide vaut 0 point.
 
-## Lancer le jeu
+## Lancer le jeu sur son ordinateur
 
 Il faut [Node.js](https://nodejs.org) version 18 ou plus récente.
 
@@ -27,6 +27,27 @@ Ouvre ensuite http://localhost:3000. Pour tester seul, ouvre plusieurs onglets e
 Pour jouer à plusieurs sur le même réseau Wi-Fi, les autres joueurs ouvrent `http://<adresse-IP-de-ton-PC>:3000`.
 
 Pour lancer les tests des règles : `npm test`.
+
+## Mettre le jeu en ligne (Render)
+
+Pour que les joueurs n'aient rien à installer, le jeu peut être hébergé gratuitement sur [Render](https://render.com). Il suffit alors d'ouvrir le lien du site, sur ordinateur comme sur téléphone.
+
+Sur Render, crée un **Web Service** relié à ce dépôt, avec ces réglages :
+
+| Champ | Valeur |
+|---|---|
+| Language | `Node` |
+| Branch | `main` |
+| Region | `Frankfurt (EU Central)` |
+| Root Directory | *(laisser vide)* |
+| Build Command | `npm install` |
+| Start Command | `npm start` |
+| Instance Type | `Free` |
+
+À bien savoir :
+- Chaque modification envoyée sur la branche `main` met le site à jour automatiquement.
+- En version gratuite, le serveur s'endort après 15 minutes sans joueur. Le premier visiteur attend alors environ une minute que le site se réveille.
+- Les parties sont gardées en mémoire. Une mise à jour ou une mise en veille du serveur arrête donc les parties en cours.
 
 ## Ajouter des mèmes
 

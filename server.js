@@ -103,5 +103,7 @@ io.on('connection', (socket) => {
 });
 
 server.listen(PORT, () => {
-  console.log(`Jeu des mèmes lancé sur http://localhost:${PORT} (${memes.length} mèmes chargés)`);
+  // Sur Render, RENDER_EXTERNAL_URL contient l'adresse publique du site
+  const url = process.env.RENDER_EXTERNAL_URL || `http://localhost:${PORT}`;
+  console.log(`Jeu des mèmes lancé sur ${url} (${memes.length} mèmes chargés)`);
 });
