@@ -1,0 +1,73 @@
+:root {
+  --bg: #f4f4f8;
+  --card: #ffffff;
+  --text: #1e1e2a;
+  --muted: #6b6b80;
+  --accent: #6c5ce7;
+  --good: #00b894;
+  --bad: #d63031;
+  --border: #dcdce6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #15151d;
+    --card: #20202b;
+    --text: #ececf3;
+    --muted: #9a9ab0;
+    --border: #353545;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, sans-serif;
+}
+main { max-width: 760px; margin: 0 auto; padding: 16px; }
+h1 { text-align: center; }
+.screen {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.screen[hidden] { display: none; }
+label { display: flex; flex-direction: column; gap: 6px; font-weight: 600; }
+input, select, button {
+  font: inherit;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+}
+button { background: var(--accent); color: #fff; border: none; cursor: pointer; font-weight: 600; }
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+.row { display: flex; gap: 8px; }
+.row input { flex: 1; min-width: 0; }
+.hint { color: var(--muted); margin: 0; font-size: 0.9em; }
+.error { background: var(--bad); color: #fff; padding: 10px; border-radius: 8px; }
+.code { font-family: monospace; letter-spacing: 4px; color: var(--accent); }
+.settings { display: grid; gap: 10px; }
+.players, .answers, .scores { margin: 0; padding-left: 0; list-style: none; display: grid; gap: 8px; }
+.scores { list-style: decimal inside; font-size: 1.15em; }
+.topbar { display: flex; justify-content: space-between; font-weight: 600; }
+.timer.urgent { color: var(--bad); }
+.media { display: flex; justify-content: center; }
+.media img, .media video { max-width: 100%; max-height: 420px; border-radius: 8px; }
+.answers li {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px;
+  display: grid;
+  gap: 6px;
+}
+.answers li.empty { opacity: 0.6; }
+.answer-text { word-break: break-word; }
+.actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; color: var(--muted); }
+.vote { background: var(--bg); color: var(--text); border: 1px solid var(--border); }
+.vote.selected { background: var(--accent); color: #fff; border-color: var(--accent); }

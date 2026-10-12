@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Devine le mème</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>Devine le mème</h1>
+    <p id="error" class="error" hidden></p>
+
+    <!-- Accueil -->
+    <section id="home" class="screen">
+      <label>Ton pseudo <input id="name" maxlength="20" autocomplete="off"></label>
+      <button id="create">Créer un salon</button>
+      <div class="row">
+        <input id="code" placeholder="CODE" maxlength="4" autocomplete="off">
+        <button id="join">Rejoindre</button>
+      </div>
+    </section>
+
+    <!-- Salon d'attente -->
+    <section id="lobby" class="screen" hidden>
+      <h2>Salon <span id="room-code" class="code"></span></h2>
+      <p class="hint">Donne ce code à tes amis pour qu'ils te rejoignent.</p>
+      <div class="settings">
+        <label>Temps par mème
+          <select id="time"></select>
+        </label>
+        <label>Nombre de mèmes
+          <input id="count" type="number" min="1">
+        </label>
+        <p id="settings-hint" class="hint"></p>
+      </div>
+      <ul id="lobby-players" class="players"></ul>
+      <button id="ready"></button>
+      <button id="start" hidden>Lancer la partie</button>
+    </section>
+
+    <!-- Phase de réponses -->
+    <section id="answering" class="screen" hidden>
+      <div class="topbar">
+        <span id="answer-round"></span>
+        <span id="timer" class="timer"></span>
+      </div>
+      <div id="answer-media" class="media"></div>
+      <form id="answer-form" class="row">
+        <input id="answer" placeholder="Nom du mème, paroles..." autocomplete="off">
+        <button type="submit">Valider</button>
+      </form>
+      <p id="answer-status" class="hint"></p>
+    </section>
+
+    <!-- Phase de votes -->
+    <section id="voting" class="screen" hidden>
+      <div class="topbar"><span id="vote-round"></span></div>
+      <div id="vote-media" class="media"></div>
+      <ul id="vote-answers" class="answers"></ul>
+      <button id="next-vote" hidden></button>
+      <p id="vote-hint" class="hint"></p>
+    </section>
+
+    <!-- Résultats -->
+    <section id="results" class="screen" hidden>
+      <h2>Classement</h2>
+      <ol id="scores" class="scores"></ol>
+      <button id="replay" hidden>Retour au salon</button>
+    </section>
+  </main>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="client.js"></script>
+</body>
+</html>
