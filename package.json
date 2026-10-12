@@ -1,0 +1,15 @@
+{
+  "name": "test-jeu2",
+  "version": "0.1.0",
+  "description": "Jeu multijoueur : trouver le nom des mèmes, validé par le vote des joueurs",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.22.3",
+    "socket.io": "^4.8.4"
+  }
+}
